@@ -33,20 +33,20 @@ function initDraw(canvas) {
         }
     }
 
-    canvas.onclick = function (e) {
-        if (element !== null) {
-            element = null;
-            canvas.style.cursor = "default";
-        } else {
-            mouse.startX = mouse.x;
-            mouse.startY = mouse.y;
-            element = document.createElement('div');
-            element.className = 'rectangle'
-            element.style.left = mouse.x + 'px';
-            element.style.top = mouse.y + 'px';
-            canvas.appendChild(element)
-            canvas.style.cursor = "crosshair";
-        }
+    canvas.onmousedown = (e) => {
+        mouse.startX = mouse.x;
+        mouse.startY = mouse.y;
+        element = document.createElement('div');
+        element.className = 'rectangle'
+        element.style.left = mouse.x + 'px';
+        element.style.top = mouse.y + 'px';
+        canvas.appendChild(element)
+        canvas.style.cursor = "crosshair";
+    }
+
+    canvas.onmouseup = (e) => {
+        element = null;
+        canvas.style.cursor = "default";
     }
 }
 
