@@ -13,15 +13,8 @@ function initDraw(canvas) {
 
     })
     function setMousePosition(e) {
-        console.log(document.body.scrollTop)
-        // var ev = e /* || window.event; */
-        // if (ev.pageX) {
-        //     mouse.x = ev.pageX + window.pageXOffset;
-        //     mouse.y = ev.pageY + window.pageYOffset;
-        // } else if (ev.clientX) {
         mouse.x = e.clientX + document.body.scrollLeft;
         mouse.y = e.clientY + document.body.scrollTop;
-        // }
     };
 
     var mouse = {
@@ -47,8 +40,6 @@ function initDraw(canvas) {
         mouse.startY = mouse.y;
         rectangleElement = document.createElement('div');
         rectangleElement.className = 'rectangle'
-        // rectangleElement.style.left = mouse.x + 'px';
-        // rectangleElement.style.top = mouse.y + 'px';
         canvas.appendChild(rectangleElement)
         canvas.style.cursor = "crosshair";
     }
