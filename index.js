@@ -4,7 +4,7 @@ initDraw(element);
 let isBlur = false;
 
 function initDraw(canvas) {
-    
+
     function setMousePosition(e) {
         mouse.x = e.clientX + document.body.scrollLeft;
         mouse.y = e.clientY + document.body.scrollTop;
@@ -19,12 +19,14 @@ function initDraw(canvas) {
     var rectangleElement = null;
 
     window.addEventListener('mousedown', (e) => {
-        mouse.startX = mouse.x;
-        mouse.startY = mouse.y;
-        rectangleElement = document.createElement('div');
-        rectangleElement.className = 'rectangle'
-        canvas.appendChild(rectangleElement)
-        canvas.style.cursor = "crosshair";
+        if (e.target.className !== 'rectangle') {
+            mouse.startX = mouse.x;
+            mouse.startY = mouse.y;
+            rectangleElement = document.createElement('div');
+            rectangleElement.className = 'rectangle'
+            canvas.appendChild(rectangleElement)
+            canvas.style.cursor = "crosshair";
+        }
     })
 
     window.addEventListener('mousemove', function (e) {
@@ -44,7 +46,6 @@ function initDraw(canvas) {
 }
 
 function clearBlur() {
-    console.log(document.getElementsByClassName('rectangle').length);
     if (document.getElementsByClassName('rectangle').length) {
         element.innerHTML = ""
     }
